@@ -16,6 +16,7 @@ var auth_middleware = expAuth.middleware;
 
 app.use((req, res, next) => {
 	const fname = path.basename(req.path);
+	console.log("[access] " + req.path);
 	if (null === fname.match(/^pub-/)) {
 		console.log("[private file] " + fname);
 		auth_middleware(req, res, next);
@@ -25,9 +26,9 @@ app.use((req, res, next) => {
 	}
 });
 
-app.use(express.static(srv_dir));
+app.use('/static', express.static(srv_dir));
 
-app.get('/', function (req, res) {
+app.get('/static', function (req, res) {
 	res.sendFile(path.resolve('./README.md'));
 });
 

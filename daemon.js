@@ -3,7 +3,7 @@ var path = require('path');
 var expAuth = require('../auth/express-auth.js');
 var app = express();
 
-const port = 8961;
+const port = 6130;
 const srv_dir = '/home/tk/master-tree';
 
 expAuth.init(app, {
